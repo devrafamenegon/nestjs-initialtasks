@@ -1,52 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { Task } from './task';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class TaskService {
-  tasks: Task[] = [
-    { id: 1, description: 'Tarefa 1', completed: false },
-    { id: 2, description: 'Tarefa 2', completed: false },
-    { id: 4, description: 'Tarefa 4', completed: false },
-    { id: 5, description: 'Tarefa 5', completed: false },
-    { id: 6, description: 'Tarefa 6', completed: false },
-    { id: 7, description: 'Tarefa 7', completed: false },
-    { id: 8, description: 'Tarefa 8', completed: false },
-    { id: 9, description: 'Tarefa 9', completed: false },
-  ];
+  constructor(@InjectModel('Task') private readonly taskModel: Model<Task>) {}
 
-  getAll() {
-    return this.tasks;
+  //search all data from db
+  async getAll() {
+    return await this.taskModel.find().exec();
   }
 
-  getById(id: number) {
-    const task = this.tasks.find((value) => value.id == id);
-    return task;
+  //search one of all by id
+  async getById(id: string) {
+    return await this.taskModel.findById(id).exec();
   }
 
-  create(task: Task) {
-    let lastId = 0;
-    if (this.tasks.length > 0) {
-      lastId = this.tasks[this.tasks.length - 1].id;
-    }
-
-    task.id = lastId + 1;
-    this.tasks.push(task);
-
-    return task;
+  //create a new task and save in the task collection in MongoDB
+  async create(task: Task) {
+    const createdTask = new this.taskModel(task);
+    return await createdTask.save();
   }
 
-  update(task: Task) {
-    const taskArray = this.getById(task.id);
-    if (taskArray) {
-      taskArray.description = task.description;
-      taskArray.completed = task.completed;
-    }
-
-    return taskArray;
+  //update a task by id with the task received, and return the modified task
+  async update(id: string, task: Task) {
+    await this.taskModel.updateOne({ _id: id }, task).exec();
+    return this.getById(id);
   }
 
-  delete(id: number) {
-    const index = this.tasks.findIndex((value) => value.id == id);
-    this.tasks.splice(index, 1);
+  //delete a task by id
+  async delete(id: string) {
+    return await this.taskModel.deleteOne({ _id: id }).exec();
   }
 }
