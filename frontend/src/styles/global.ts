@@ -11,16 +11,17 @@ export default createGlobalStyle`
     --white: #fff;
     --black: #000;
     --title: #222;
-    --dark-gray: #212121;
-    --light-gray: #757575;
-    --background: #fdfdfd;
-    --red: #ff5252;
-    --green: #8bc34a;
-    --blue: #448aff;
+    --darkgray: #212121;
+    --lightgray: #e5e5e5;
+    --navyblue: #1E3D58;
+    --royalblue: #057DCD;
+    --bluegrotto: #43B0F1;
+    --redlava: #f14343;
+    --simplewhite: #E8EEF1;
   }
 
   body {
-    background: var(--background);
+    background: var(--simplewhite);
   }
 
   body,
