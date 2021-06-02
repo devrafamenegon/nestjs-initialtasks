@@ -1,12 +1,18 @@
 import GlobalStyle from './styles/global';
+import { navbarButtons, handleContent } from './components/Navbar/index';
 
-import AllTasks from './components/AllTasks/index';
+import { useState } from 'react';
+
 
 function App() {
+  const [content, setContent] = useState('home');
+  const [taskId, setTaskId] = useState('');
+
   return (
     <>
       <GlobalStyle />
-      <AllTasks />
+      { navbarButtons(setContent) }
+      { handleContent(setContent, content, setTaskId, taskId) }
     </>
   );
 }
