@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+
+interface NavButtonProps {
+  isActive: boolean;
+}
 
 const NavContainer = styled.nav`
   width: 100vw;
@@ -31,4 +35,14 @@ const NavLinks = styled.div`
   }
 `;
 
-export { NavContainer, NavLinks }
+const NavButton = styled.div<NavButtonProps>`
+  border: none;
+  color: var(--simplewhite);
+  background: var(--royalblue);
+
+  ${({ isActive }) => isActive && css`
+    text-decoration: underline;
+  `}
+`;
+
+export { NavContainer, NavLinks, NavButton }

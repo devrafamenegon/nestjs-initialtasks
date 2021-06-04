@@ -1,9 +1,9 @@
 import {AllTasks} from '../AllTasks/index';
 import CreateTask from '../CreateTask/index';
 import {UpdateTask} from '../UpdateTask/index';
-import { NavContainer, NavLinks } from './styles';
+import { NavContainer, NavLinks, NavButton } from './styles';
 
-export const navbarButtons = (setContent) => {
+export const navbarButtons = (content, setContent) => {
   
   return(
     <NavContainer>
@@ -15,15 +15,15 @@ export const navbarButtons = (setContent) => {
       <NavLinks>
         <ul>
           <li>
-            <button onClick={() => setContent('home')}>
+            <NavButton isActive={content === 'home'} onClick={() => setContent('home')}>
               Home
-            </button>
+            </NavButton>
           </li>
           
           <li>
-            <button onClick={() => setContent('create')}>
+            <NavButton isActive={content === 'create'} onClick={() => setContent('create')}>
               Criar
-            </button>
+            </NavButton>
           </li>
         </ul>
       </NavLinks>
