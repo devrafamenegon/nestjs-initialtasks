@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      { navbarButtons(setContent) }
+      { navbarButtons(content, setContent) }
       { handleContent(setContent, content, setTaskId, taskId) }
     </>
   );
