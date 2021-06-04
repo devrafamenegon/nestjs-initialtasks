@@ -18,6 +18,7 @@ const CreateBody = styled.div`
   flex-direction: column;
 
   span {
+    margin-top: 10px;
     padding-left: 5px;
     color: var(--navyblue);
   }
@@ -63,4 +64,23 @@ const CreateBody = styled.div`
   }
 `;
 
-export { CreateContainer, CreateBody }
+const StatusContainer = styled.div`
+  margin-top: 10px;
+
+  span {
+    margin-bottom: 5px;
+  }
+`;
+
+const StatusRadioContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+
+  input {
+    padding: 0;
+    margin: 0px 5px 0px 5px;
+  }
+`;
+
+export { CreateContainer, CreateBody, StatusContainer, StatusRadioContainer }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { updateTask, getById } from '../../services/endpoint';
 
-import { CreateContainer, CreateBody } from './styles';
+import { CreateContainer, CreateBody, StatusContainer, StatusRadioContainer } from './styles';
 
 export const UpdateTask = ({setContent, tId}) => {
   const [task, setTask] = useState({});
@@ -35,8 +35,20 @@ export const UpdateTask = ({setContent, tId}) => {
       <CreateBody>
         <span>Descrição</span>
         <input value={description} onChange={(event) => setDesc(event.target.value)} />
-        <span>Status</span>
-        <input type="" value={completed} onChange={(event) => setCompleted(event.target.value)} />
+        
+        <StatusContainer>
+          <span>Status</span>
+          <StatusRadioContainer>
+            <input type="radio" name="status" checked={completed === false} onChange={() => setCompleted(false)} />
+            <label>Pendente</label>
+          </StatusRadioContainer>
+            
+          <StatusRadioContainer>
+            <input type="radio" name="status" checked={completed === true} onChange={() => setCompleted(true)} />
+            <label>Completo</label>
+          </StatusRadioContainer>
+        </StatusContainer>
+
         <button disabled={description === ''} onClick={() => editClick()}>Editar</button>
       </CreateBody>
     </CreateContainer>
