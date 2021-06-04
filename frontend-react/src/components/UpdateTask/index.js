@@ -5,10 +5,9 @@ import { updateTask, getById } from '../../services/endpoint';
 import { CreateContainer, CreateBody, StatusContainer, StatusRadioContainer } from './styles';
 
 export const UpdateTask = ({setContent, tId}) => {
-  const [task, setTask] = useState({});
-  const [id, setId] = useState(tId);
   const [description, setDesc] = useState('');
   const [completed, setCompleted] = useState('');
+  const id = tId;
 
   useEffect(() => {
     const fetchTask = async() => {

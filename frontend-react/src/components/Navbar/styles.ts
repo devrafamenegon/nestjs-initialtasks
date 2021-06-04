@@ -1,22 +1,26 @@
 import styled, {css} from "styled-components";
+import { FaHome, FaPlusSquare } from "react-icons/fa";
 
 interface NavButtonProps {
   isActive: boolean;
 }
 
 const NavContainer = styled.nav`
-  width: 100vw;
-  height: 4em;
+  width: 4em;
+  height: 100vh;
 
-  padding: 0 10vw;
+  padding: 0 50px;
+  position: fixed;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
   align-items: center;
 
   color: var(--simplewhite);
   background: var(--royalblue);
 
   button {
+    margin-top: 10vh;
     border: none;
     color: var(--simplewhite);
     background: var(--royalblue);
@@ -24,25 +28,38 @@ const NavContainer = styled.nav`
 `;
 
 const NavLinks = styled.div`
+  margin-top: 20vh;
+  
   ul {
     list-style: none;
     display: flex;
+    flex-direction: column;
   }
 
   li {
-    margin: 0 10px;
+    margin: 0 10px 30px 10px;
     cursor: pointer;
   }
 `;
 
-const NavButton = styled.div<NavButtonProps>`
+const NavButton = styled.div`
   border: none;
   color: var(--simplewhite);
   background: var(--royalblue);
+`;
 
+const StyledFaHome = styled(FaHome)<NavButtonProps>`
+  
   ${({ isActive }) => isActive && css`
-    text-decoration: underline;
+    color: var(--navyblue);
   `}
 `;
 
-export { NavContainer, NavLinks, NavButton }
+const StyledFaPlusSquare = styled(FaPlusSquare)<NavButtonProps>`
+  
+  ${({ isActive }) => isActive && css`
+    color: var(--navyblue);
+  `}
+`;
+
+export { NavContainer, NavLinks, NavButton, StyledFaHome, StyledFaPlusSquare }

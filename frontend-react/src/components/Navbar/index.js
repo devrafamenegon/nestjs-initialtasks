@@ -1,7 +1,8 @@
 import {AllTasks} from '../AllTasks/index';
 import CreateTask from '../CreateTask/index';
 import {UpdateTask} from '../UpdateTask/index';
-import { NavContainer, NavLinks, NavButton } from './styles';
+
+import { NavContainer, NavLinks, NavButton, StyledFaHome, StyledFaPlusSquare } from './styles';
 
 export const navbarButtons = (content, setContent) => {
   
@@ -15,14 +16,14 @@ export const navbarButtons = (content, setContent) => {
       <NavLinks>
         <ul>
           <li>
-            <NavButton isActive={content === 'home'} onClick={() => setContent('home')}>
-              Home
+            <NavButton onClick={() => setContent('home')}>
+              <StyledFaHome isActive={content === 'home'} size="50px"/>
             </NavButton>
           </li>
           
           <li>
-            <NavButton isActive={content === 'create'} onClick={() => setContent('create')}>
-              Criar
+            <NavButton onClick={() => setContent('create')}>
+              <StyledFaPlusSquare isActive={content === 'create'} size="50px"/>
             </NavButton>
           </li>
         </ul>

@@ -1,7 +1,9 @@
 import styled, {css} from "styled-components";
+import { generateMedia } from "styled-media-query";
+import media from "styled-media-query";
+
 import Popup from 'reactjs-popup';
 import { FaPlus } from "react-icons/fa";
-
 
 interface ButtonProps {
   isEdit?: boolean;
@@ -11,11 +13,20 @@ interface ButtonPopupProps {
   isYes?: boolean;
 }
 
+const customMedia = generateMedia({
+  laptopL: '1440px',
+  laptop: '1024px',
+  tablet: '768px',
+  mobileL: '425px',
+  mobileM: '375px',
+  mobileS: '320px',
+});
+
 const HomeContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 4rem);
+  height: 100vh;
 
-  padding: 2em 10vw;
+  padding: 3em 10em;
 
   background: var(--background);
 `;
@@ -24,6 +35,21 @@ const TasksContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 20px;
+
+  ${media.lessThan("medium")`
+    /* screen width is less than 768px (medium) */
+    grid-template-columns: repeat(2, 1fr);
+  `}
+
+  ${media.between("medium", "large")`
+    /* screen width is between 768px (medium) and 1170px (large) */
+    grid-template-columns: repeat(3, 1fr);
+  `}
+
+  ${media.greaterThan("large")`
+    /* screen width is greater than 1170px (large) */
+    
+  `}
 `;
 
 const TasksCards = styled.ul`
@@ -161,6 +187,8 @@ const ContainerFaPlusSquare = styled(TasksCards)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  animation: 1s showAnimation;
 `;
 
 const StyledFaPlusSquare = styled(FaPlus)`
