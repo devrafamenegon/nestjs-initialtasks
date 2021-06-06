@@ -17,6 +17,8 @@ export const UpdateTask = ({setContent, tId}) => {
       setDesc(taskRes.data.description);
     };
     fetchTask();
+
+  //eslint-disable-next-line
   }, []);
 
   const handleUpdateTask = async () => {
