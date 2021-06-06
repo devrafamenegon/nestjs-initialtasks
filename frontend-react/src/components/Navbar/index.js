@@ -17,13 +17,13 @@ export const navbarButtons = (content, setContent) => {
         <ul>
           <li>
             <NavButton onClick={() => setContent('home')}>
-              <StyledFaHome isActive={content === 'home'} size="50px"/>
+              <StyledFaHome isActive={content === 'home'}/>
             </NavButton>
           </li>
           
           <li>
             <NavButton onClick={() => setContent('create')}>
-              <StyledFaPlusSquare isActive={content === 'create'} size="50px"/>
+              <StyledFaPlusSquare isActive={content === 'create'}/>
             </NavButton>
           </li>
         </ul>
