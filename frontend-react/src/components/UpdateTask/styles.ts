@@ -1,16 +1,32 @@
 import styled from "styled-components";
+import { generateMedia } from "styled-media-query";
+
+const customMedia = generateMedia({
+  desktopL: "2560px",
+  desktop: "1920px",
+  laptopL: "1440px",
+  laptop: "1024px",
+  tablet: "768px",
+  mobileL: "425px",
+  mobileM: "375px",
+  mobileS: "320px",
+});
 
 const CreateContainer = styled.div`
   width: 100vw;
-  height: calc(100vh - 4rem);
+  height: 100vh;
 
-  padding: 2em 10vw;
+  padding: 32vh 2em 0 10em;
 
   background: var(--background);
+
+  ${customMedia.lessThan("mobileL")`
+      padding: 10em 2em;
+  `}
 `;
 
 const CreateBody = styled.div`
-  width: 30%;
+  width: 600px;
 
   margin-top: 30px;
 
@@ -38,7 +54,7 @@ const CreateBody = styled.div`
   }
 
   button {
-    width: 20%;
+    width: 100px;
     margin-top: 20px;
     padding: 10px 2px;
 
@@ -62,6 +78,14 @@ const CreateBody = styled.div`
       color: var(--simplewhite);
     }
   }
+
+  ${customMedia.lessThan("laptop")`
+    width: 80%;
+  `}
+
+  ${customMedia.lessThan("mobileL")`
+    width: 100%;
+  `}
 `;
 
 const StatusContainer = styled.div`
